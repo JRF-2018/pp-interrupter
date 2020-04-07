@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- Time-stamp: "2017-12-25T07:41:40Z" -->
+
+<html>
+<head>
+<meta charset="utf-8" />
+<style type="text/css">
+/*
+html, body {
+  width: 100%;
+}
+*/
+
+h2 {
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+.item {
+  margin: 3% 0;
+  padding: 4px;
+  text-align: center;
+/*  font-size: 1.5em; */
+  border: 0;
+/* background-color: #E5F2F2; */
+  cursor: pointer;
+  border: medium solid gray;
+}
+
+.item:hover {
+  border: medium solid blue;
+}
+
+.item.selected {
+  border: medium solid red;
+}
+
+.item.selected:hover {
+  border: medium solid blue;
+}
+
+#choose-authorities {
+  padding: 0 3em;
+}
+
+#choose-settings {
+  padding: 0 3em;
+}
+
+#choose-extensions {
+  padding: 0 3em;
+}
+
+#edit-item {
+  padding: 3em;
+}
+
+#choose-panel {
+  text-align: center;
+}
+
+#edit-panel {
+  text-align: center;
+}
+
+#edit-item td {
+  text-align: left;
+  padding: 0.5em;
+}
+
+.error {
+  margin: 1.5em;
+}
+
+img {
+  padding-right: 0.3em;
+  vertical-align: middle;
+}
+
+input[type="button"] {
+  margin-top: 0.3em;
+}
+
+</style>
+</head>
+
+<body>
+<div id="choose">
+
+<h2>Allowing Extensions</h2>
+<div id="choose-extensions">
+</div>
+
+<h2>Authorities to Interrupt</h2>
+<div id="choose-authorities">
+</div>
+
+<div id="choose-error">
+</div>
+
+<div id="choose-panel">
+<input type="button" id="choose-up" value="Up" />
+<input type="button" id="choose-down" value="Down" />
+<input type="button" id="choose-edit" value="Edit" />
+<input type="button" id="choose-delete" value="Delete" /><br />
+<input type="button" id="choose-new-a" value="New Authority" />
+<input type="button" id="choose-new-e" value="New Extension" /><br />
+<input type="button" id="choose-add-pp" value="Add from PP Authorizer" />
+</div>
+</div>
+
+<div id="edit">
+<div id="edit-item" class="error">
+<table>
+<tr><td>name</td><td><input type="text" id="edit-name" size="64" /></td></tr>
+<tr><td id="edit-label">url</td><td><input type="text" id="edit-url" size="64" /></td></tr>
+</table>
+</div>
+
+<div id="edit-error" class="error">
+</div>
+
+<div id="edit-panel">
+<input type="button" id="edit-save" value="Save" />
+<input type="button" id="edit-cancel" value="Cancel" />
+</div>
+</div>
+
+<script src="options.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "PP Interrupter",
+  "version": "0.7",
+
+  "description": "Interrupts web-navigation to specified urls in order to Protect Privacy.",
+
+  "icons": {
+    "48": "icons/pp-red_48.png"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "{c35621af-46f1-4338-a8b6-c26bba37fb98}"
+    }
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "notifications",
+    "storage",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+
+  "background": {
+    "scripts": ["consts.js", "background.js"]
+  },
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "icons/pp-red_32.png",
+    "default_title": "PP Interrupter"
+  }
+}
