@@ -1,6 +1,6 @@
 # PP Interrupter
 
-<!-- Time-stamp: "2020-04-07T05:34:51Z" -->
+<!-- Time-stamp: "2020-04-07T06:03:47Z" -->
 
 ## What is this?
 
@@ -23,7 +23,7 @@ continue the blocked page, you can cancel it by clicking the "Stop"
 button of the browser.
 
 Read
-[README_en.html](http://jrf.cocolog-nifty.com/archive/pp-interrupter/README_en.html)
+[README_en.html](http://jrf.cocolog-nifty.com/archive/pp-interrupter/README_en.html).
 
 
 ## これは何？
