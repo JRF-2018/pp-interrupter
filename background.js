@@ -1,7 +1,7 @@
 /*
  * background.js of pp-interrupter
  *
- * Time-stamp: <2017-12-26T02:30:22Z>
+ * Time-stamp: <2020-11-03T05:22:26Z>
  */
 //console.log("background.js: ok");
 
@@ -81,10 +81,12 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab)  => {
       delete tabData[tabId];
     }
   }
-  chrome.pageAction.hide(tabId);
+  //chrome.pageAction.hide(tabId);
+  chrome.browserAction.disable(tabId);
 });
 
-chrome.pageAction.onClicked.addListener(tab => {
+//chrome.pageAction.onClicked.addListener(tab => {
+chrome.browserAction.onClicked.addListener(tab => {
   if (tab.id in tabData) {
     const data = tabData[tab.id];
     if ('div' in data) {
@@ -93,7 +95,8 @@ chrome.pageAction.onClicked.addListener(tab => {
       chrome.notifications.clear(notificationId);
     }
     delete tabData[tab.id];
-    chrome.pageAction.hide(tab.id);
+//    chrome.pageAction.hide(tab.id);
+    chrome.browserAction.disable(tab.id);
   }
 });
 
@@ -111,7 +114,8 @@ function blockRequest (details) {
     if (details.url == url
 	  || (details.url.length > url.length && 
 	      details.url.substr(0, url.length) == url
-	      && details.url.substr(url.length, 1).match(/[\?\&\/]/))) {
+	      && (url.match(/[\/]$/)
+		  || details.url.substr(url.length, 1).match(/[\?\&\/]/)))) {
       a = settings.authorities[i];
       break;
     }
@@ -122,7 +126,8 @@ function blockRequest (details) {
     if (link == a.url
 	  || (link.length > a.url.length && 
 	      link.substr(0, a.url.length) == a.url
-	      && link.substr(a.url.length, 1).match(/[\?\&\/]/))) {
+	      && (a.url.match(/[\/]$/)
+		  || link.substr(a.url.length, 1).match(/[\?\&\/]/)))) {
       return {cancel: false};
     }
   }
@@ -142,9 +147,12 @@ function blockRequest (details) {
     }, false);
   });
   tabData[details.tabId] = {div: div};
-  chrome.pageAction.show(details.tabId);
-  if ('setTitle' in chrome.pageAction) {
-    chrome.pageAction.setTitle({
+//  chrome.pageAction.show(details.tabId);
+  chrome.browserAction.enable(details.tabId);
+//  if ('setTitle' in chrome.pageAction) {
+//    chrome.pageAction.setTitle({
+  if ('setTitle' in chrome.browserAction) {
+    chrome.browserAction.setTitle({
       tabId: details.tabId,
       title: "PP Interrupter: " + a.name
     });
